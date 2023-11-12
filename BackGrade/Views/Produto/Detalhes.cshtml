@@ -1,0 +1,29 @@
+﻿<!-- Views/Produto/Detalhes.cshtml -->
+@model BackGrade.Models.ProdutoModel
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+
+<div class="container mt-5">
+    <h2>@Model.Nome</h2>
+
+    <h3>Avaliações do Reclame Aqui:</h3>
+    @foreach (var review in Model.Avaliacoes)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-text">@review.Comentario</p>
+                <p class="card-text"><strong>Nota:</strong> @review.Avaliacao</p>
+            </div>
+        </div>
+    }
+
+    <h3>Resposta do ChatGPT:</h3>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">@Model.RespostaChatGPT</p>
+        </div>
+    </div>
+</div>
+

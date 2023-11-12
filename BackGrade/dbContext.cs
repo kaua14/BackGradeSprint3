@@ -7,8 +7,9 @@
     {
         public dbContext(DbContextOptions<dbContext> options) : base(options) { }
 
-        public DbSet<Feedback> T_FEEDBACK { get; set; }
-        public DbSet<Cliente> T_CLIENTE { get; set; }
+        public DbSet<ReclameAquiReview> ReclameAquiReviews { get; set; }
+        public DbSet<ProdutoModel> Produtos { get; set; }
+
     }
 
 }
