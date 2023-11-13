@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BackGrade.Models
@@ -21,9 +22,6 @@ namespace BackGrade.Models
         {
             try
             {
-                // Aqui você pode ajustar para a URL real da API do ReclameAqui
-                // string apiUrl = $"{_apiUrl}/avaliacoes?produto={produto}";
-
                 // Simulando uma resposta da API com dados fictícios
                 var avaliacoes = new List<ReclameAquiReview>
                 {

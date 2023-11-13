@@ -14,23 +14,29 @@ namespace BackGrade.Controllers
             _chatGPTAPI = chatGPTAPI;
         }
 
-        public IActionResult Detalhes(string nome)
-        {
-            // Lógica para obter avaliações do Reclame Aqui
-            var avaliacoes = _reclameAquiAPI.ObterAvaliacoesAsync(nome).Result;
 
-            // Criar o modelo do produto
-            var produtoModel = new ProdutoModel
+            public async Task<IActionResult> Detalhes(string nome)
             {
-                Nome = nome,
-                Avaliacoes = avaliacoes
-            };
+                // Lógica para obter avaliações do Reclame Aqui
+                var avaliacoes = await _reclameAquiAPI.ObterAvaliacoesAsync(nome);
+
+                // Criar o modelo do produto
+                var produtoModel = new ProdutoModel
+                {
+                    Nome = nome,
+                    Avaliacoes = avaliacoes
+                };
 
             // Pergunta ao ChatGPT com base nas avaliações
-            produtoModel.RespostaChatGPT = _chatGPTAPI.ObterRespostaAsync(produtoModel.PerguntaChatGPT).Result;
+            produtoModel.RespostaChatGPT = await _chatGPTAPI.ObterRespostaAsync(avaliacoes, produtoModel.PerguntaChatGPT);
+
 
             // Passar o modelo para a View
             return View("Detalhes", produtoModel);
+            }
+
+          
         }
     }
-}
+
+

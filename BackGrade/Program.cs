@@ -31,8 +31,8 @@ builder.Services.AddScoped<ReclameAquiAPI>(provider =>
 builder.Services.AddScoped<ChatGPTAPI>(provider =>
 {
     // Você pode ajustar os parâmetros do construtor conforme necessário
-    var apiKey = "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";
-    var apiUrl = "https://api.chatgpt.com/v1"; // Exemplo, ajuste conforme necessário
+    var apiKey = "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";
+    var apiUrl = "https://api.openai.com/v1/completions"; // Exemplo, ajuste conforme necessário
 
     return new ChatGPTAPI(apiKey, apiUrl);
 });
@@ -54,6 +54,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Produto}/{action=Detalhes}/{id?}");
+
 
 app.Run();
